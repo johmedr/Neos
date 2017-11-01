@@ -49,4 +49,12 @@ template <>
 struct is_empty<> : true_type
 {};
 
+template <class T, class U>
+struct equals : false_type
+{}; 
+
+template <class T>
+struct equals<T, T> : true_type
+{};
+
 #endif 

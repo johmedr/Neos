@@ -5,7 +5,13 @@
 #include "./Spice.hxx"
 
 template <class ...Spices> 
-class Atom : public enable_if<is_spice<Spices...>::value, Spice>::type
+class Atom : public enable_if<
+						meta_or<
+							is_spice<Spices ...>::value,
+							is_empty<Spices ...>::value
+							>::value,
+						Spice
+					>::type
 {}; 
 
 #endif

@@ -4,5 +4,6 @@
 #include "./conditions.hxx"
 #include "./base_types.hxx"
 #include "./spice_utils.hxx"
+#include "./variadic.hxx"
 
 #endif

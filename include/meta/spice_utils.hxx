@@ -16,7 +16,9 @@ struct is_spice : std::conditional<
 {};
 
 template <>
-struct is_spice<> : true_type
+struct is_spice<> : false_type
 {};
+
+
 
 #endif
