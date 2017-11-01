@@ -5,5 +5,6 @@
 #include "./base_types.hxx"
 #include "./spice_utils.hxx"
 #include "./variadic.hxx"
+#include "./data_structure.hxx"
 
 #endif

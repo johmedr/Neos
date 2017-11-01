@@ -12,6 +12,8 @@ class Atom : public enable_if<
 							>::value,
 						Spice
 					>::type
-{}; 
+{ 
+	using Masala = List<Spices ...>; 
+}; 
 
 #endif
