@@ -4,7 +4,7 @@
 #include "../../include/core/all.hxx"
 #include "../../include/meta/all.hxx"
 #include <iostream>
-class TestSpiceUtils
+struct TestSpiceUtils
 {
 	template <class S>
 	struct test_is_spice : is_spice<S>
