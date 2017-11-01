@@ -3,13 +3,14 @@
 
 #include "../core/Spice.hxx"
 #include "base_types.hxx"
+#include <type_traits>
 
 template <class S> 
-struct is_spice : false_type
-{};
-
-template <> 
-struct is_spice<Spice> : true_type
+struct is_spice : std::conditional<
+						std::is_base_of<Spice, S>::value, 
+						true_type, 
+						false_type
+						>::type
 {};
 
 #endif
