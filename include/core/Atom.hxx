@@ -4,7 +4,7 @@
 #include "./Spice.hxx"
 
 template <class ...Spices> 
-class Atom : public Mxx_enable_if<Mxx_are_spices<Spices...>, Spice>::type
+class Atom : public Spice//enable_if<are_spices<Spices...>, Spice>::type
 {
 
 }; 
