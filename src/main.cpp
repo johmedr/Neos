@@ -5,5 +5,6 @@ int main()
 {
 	TestSpiceUtils tsu; 
 	tsu.runTests(); 
+	Atom<> atom; 
 	return 0;
 }
