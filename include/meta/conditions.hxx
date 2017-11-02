@@ -22,11 +22,19 @@ struct meta_and
 	static constexpr bool value = (Vars && ...); 
 };
 
+template <> 
+struct meta_and<> : false_type
+{};
+
 template <bool ...Vars>
-struct meta_or
+struct meta_or : 
 {
 	static constexpr bool value = (Vars || ...); 
 };
+
+template <>
+struct meta_or<> : false_type
+{};
 
 template <class Base, class FirstSon, class ...Sons>
 struct are_derived_from

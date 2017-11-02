@@ -6,7 +6,7 @@
 
 struct TestDataStructure : public TestAtom 
 {
-	virtual bool runTests() override
+	bool testList() 
 	{
 		TEST_ASSERT( (equals<
 							typename List<>::Head, 
@@ -18,12 +18,29 @@ struct TestDataStructure : public TestAtom
 						>::value == true) );
 		TEST_ASSERT( (equals<
 							typename List<bool, char, long, float>::Tail, 
-							typename List<char, long, float>::Head
+							List<char, long, float>
 						>::value == true) );
 		TEST_ASSERT( (equals<
 							typename List<Spice>::Tail, 
 							NIL
 						>::value == true) ); 
+	} 
+
+	bool testFind() 
+	{
+		TEST_ASSERT( (find<int, List<>>::value == false) ); 
+		TEST_ASSERT( (find<float, List<int, char, bool>>::value == false) ); 
+		TEST_ASSERT( (find<char, List<Atom<>, Spice, char, bool>>::value == true) ); 
+	}
+
+	bool testEnableIfFound() 
+	{ // TODO
+	}
+
+	virtual bool runTests() override
+	{
+		testList(); 
+		testFind();
 	}
 };
 
