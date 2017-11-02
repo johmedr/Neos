@@ -3,12 +3,12 @@
 
 struct true_type 
 {
-	static const bool value = true; 
+	static constexpr bool value = true; 
 };
 
 struct false_type
 {
-	static const bool value = false; 
+	static constexpr bool value = false; 
 };
 
 #endif
