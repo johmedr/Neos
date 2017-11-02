@@ -8,7 +8,7 @@ struct NIL
 }; 
 
 template <class H = NIL, class ...T>
-struct List 
+struct List
 {
 	using Head = H; 
 	using Tail = typename List<T ...>::Head; 
