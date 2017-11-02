@@ -3,7 +3,7 @@
 
 #include "../core/Atom.hxx"
 
-struct TestAtom
+struct TestAtom : public Atom<>
 {
 	virtual bool runTests() = 0; 
 };
