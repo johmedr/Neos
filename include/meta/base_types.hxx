@@ -11,4 +11,14 @@ struct false_type
 	static constexpr bool value = false; 
 };
 
+template <class ...>
+struct empty_type
+{};
+
+template <class T>
+struct t_type
+{
+	using type = T;
+};
+
 #endif
