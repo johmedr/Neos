@@ -7,14 +7,6 @@
 template <class ...> 
 using void_t = void; 
 
-template <class ...>
-struct is_true_type : false_type
-{};
-
-template <>
-struct is_true_type<true_type> : true_type
-{};
-
 template <class ...Args> 
 struct is_empty : false_type
 {};
