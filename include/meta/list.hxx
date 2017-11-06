@@ -26,18 +26,17 @@ struct List<H>
 };
 
 template <class Elt, class Lst>
-struct contains : 	conditional< meta_or< 
-									equals< 
+struct contains : 	conditional<(   equals< 
 										Elt, 
 										typename Lst::Head
-									>:: value, 
-									contains<Elt, 
+									>:: value
+								|| 	contains<Elt, 
 										typename Lst::Tail
 									>::value
-							>::value, 
-							true_type, 
-							false_type
-					>::type
+								), 
+								true_type, 
+								false_type
+						>::type
 {};
 
 template <class Elt>

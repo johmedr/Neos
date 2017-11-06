@@ -45,38 +45,43 @@ struct enable_if<true, T>
 	using type = T;  
 };
 
-template <bool ...Vars>
-struct meta_and
-{
-	static constexpr bool value = (Vars && ...); 
-};
+// template <bool ...Vars>
+// struct meta_and : conditional< (Vars && ...), 
+// 								true_type, 
+// 								false_type
+// 							>::type
+// {};
 
-template <> 
-struct meta_and<> : false_type
-{};
+// template <> 
+// struct meta_and<> : false_type
+// {};
 
-template <bool ...Vars>
-struct meta_or : conditional< ( Vars || ... ),
+// template <bool ...Vars>
+// struct meta_or : conditional< ( Vars || ... ),
+// 								true_type, 
+// 								false_type
+// 							>::type
+// {};
+
+// template <>
+// struct meta_or<> : false_type
+// {};
+
+template <class Base, class FirstSon, class ...Sons>
+struct are_derived_from : conditional<
+								(std::is_base_of<Base, FirstSon>::value 
+								&& are_derived_from<Base, Sons...>::value), 
 								true_type, 
 								false_type
 							>::type
-{};
-
-template <>
-struct meta_or<> : false_type
-{};
-
-template <class Base, class FirstSon, class ...Sons>
-struct are_derived_from
-{
-	static constexpr bool value = std::is_base_of<Base, FirstSon>::value 
-								&& are_derived_from<Base, Sons...>::value; 
-}; 
+{}; 
 
 template <class Base, class LastSon>
-struct are_derived_from<Base, LastSon>
-{
-	static constexpr bool value = std::is_base_of<Base, LastSon>::value; 
-};
+struct are_derived_from<Base, LastSon> : conditional<
+												(std::is_base_of<Base, LastSon>::value), 
+												true_type, 
+												false_type
+											>::type
+{};
 
 #endif 

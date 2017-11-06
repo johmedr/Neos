@@ -6,17 +6,19 @@
 #include "spice_utils.hxx"
 
 template <class Elt, class First, class ...Rest>
-struct va_contains
-{
-	static constexpr bool value = (equals<Elt, First>::value || va_contains<Elt, Rest...>::value);
-}; 
+struct va_contains : conditional<
+						(equals<Elt, First>::value || va_contains<Elt, Rest...>::value), 
+						true_type, 
+						false_type
+						>::type
+{}; 
 
 template <class Elt, class Last>
-struct va_contains<Elt, Last>
-{
-	static constexpr bool value = equals<Elt, Last>::value;
-};
-
-
+struct va_contains<Elt, Last> : conditional<
+										equals<Elt, Last>::value, 
+										true_type, 
+										false_type
+									>::type
+{};
 
 #endif
