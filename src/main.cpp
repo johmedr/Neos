@@ -15,6 +15,10 @@ int main()
 	tds.runTests();
 	tc.runTests();
 
-	Atom<> atom; 
+	Atom<int, char, Spice> atom1;
+	Atom<char, bool> atom2; 
+
+	std::cout << atom1() << std::endl;
+	std::cout << atom2() << std::endl;
 	return 0;
 }

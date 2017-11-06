@@ -26,12 +26,12 @@ struct List<H>
 };
 
 template <class Elt, class Lst>
-struct contains : 	conditional<(	equals< Elt, typename Lst::Head>:: value
-								|| 	contains<Elt, typename Lst::Tail>::value
-								), 
-								true_type, 
-								false_type
-						>::type
+struct contains : 	conditional< (	equals< Elt, typename Lst::Head>:: value
+								 || contains<Elt, typename Lst::Tail>::value
+								 ), 
+								 true_type, 
+								 false_type
+								>::type
 {};
 
 template <class Elt>
@@ -41,15 +41,15 @@ struct contains<Elt, NIL> : false_type
 
 template <class Elt, class Lst, class T = void>
 using enable_if_contains = typename conditional< contains<Elt, Lst>::value, 
-										 t_type<T>, 
-										 empty_type<T>
-										>::type ; 
+												 t_type<T>, 
+												 empty_type<T>
+												>::type ; 
 
 template <class Elt, class Lst, class T = void>
-using enable_if_not_contains = typename conditional<contains<Elt, Lst>::value, 
-													empty_type<T>,
-													t_type<T>
-												>::type; 
+using enable_if_not_contains = typename conditional< contains<Elt, Lst>::value, 
+													 empty_type<T>,
+													 t_type<T>
+													>::type; 
 
 // [FIXME]
 // template <class Elt, class Lst, class T = void>
