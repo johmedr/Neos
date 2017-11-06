@@ -8,17 +8,16 @@
 #include <type_traits>
 
 template <class ...S>
-struct is_spice : std::conditional<
+struct is_spice : conditional<
 						are_derived_from<Spice, S...>::value, 
 						true_type, 
 						false_type
-						>::type
+					>::type
 {};
 
 template <>
 struct is_spice<> : false_type
 {};
-
 
 
 #endif
