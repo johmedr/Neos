@@ -6,25 +6,25 @@
 
 struct TestConditions : public TestAtom 
 {
-	bool testMetaAnd() 
-	{
-		TEST_ASSERT( (meta_and<>::value == false) ); 
-		TEST_ASSERT( (meta_and<true>::value == true) ); 
-		TEST_ASSERT( (meta_and<false>::value == false) ); 
-		TEST_ASSERT( (meta_and<true, true, true>::value == true) ); 
-		TEST_ASSERT( (meta_and<false, false, false>::value == false) );
-		TEST_ASSERT( (meta_and<true, true, false, true>::value == false) ); 
-	}
+	// bool testMetaAnd() 
+	// {
+	// 	TEST_ASSERT( (meta_and<>::value == false) ); 
+	// 	TEST_ASSERT( (meta_and<true>::value == true) ); 
+	// 	TEST_ASSERT( (meta_and<false>::value == false) ); 
+	// 	TEST_ASSERT( (meta_and<true, true, true>::value == true) ); 
+	// 	TEST_ASSERT( (meta_and<false, false, false>::value == false) );
+	// 	TEST_ASSERT( (meta_and<true, true, false, true>::value == false) ); 
+	// }
 
-	bool testMetaOr() 
-	{
-		TEST_ASSERT( (meta_or<>::value == false) ); 
-		TEST_ASSERT( (meta_or<true>::value == true) ); 
-		TEST_ASSERT( (meta_or<false>::value == false) ); 
-		TEST_ASSERT( (meta_or<true, true, true>::value == true) ); 
-		TEST_ASSERT( (meta_or<false, false, false>::value == false) ); 
-		TEST_ASSERT( (meta_or<true, false, false, false>::value == true) ); 
-	}
+	// bool testMetaOr() 
+	// {
+	// 	TEST_ASSERT( (meta_or<>::value == false) ); 
+	// 	TEST_ASSERT( (meta_or<true>::value == true) ); 
+	// 	TEST_ASSERT( (meta_or<false>::value == false) ); 
+	// 	TEST_ASSERT( (meta_or<true, true, true>::value == true) ); 
+	// 	TEST_ASSERT( (meta_or<false, false, false>::value == false) ); 
+	// 	TEST_ASSERT( (meta_or<true, false, false, false>::value == true) ); 
+	// }
 
 
 	bool testAreDerivedFrom() 
@@ -51,8 +51,8 @@ struct TestConditions : public TestAtom
 
 	virtual bool runTests() override 
 	{
-		testMetaAnd(); 
-		testMetaOr(); 
+		// testMetaAnd(); 
+		// testMetaOr(); 
 		testAreDerivedFrom(); 
 		testIsEmpty(); 
 		testEquals(); 

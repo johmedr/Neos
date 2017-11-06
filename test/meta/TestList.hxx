@@ -33,14 +33,36 @@ struct TestList : public TestAtom
 		TEST_ASSERT( (contains<char, List<Atom<>, Spice, char, bool>>::value == true) ); 
 	}
 
-	bool testEnableIfFound() 
-	{ // TODO
-	}
+	using List1 = List<int, char, Spice>; 
+
+
+	// template <class Elt, class List = List1, class T = bool>
+	// typename enable_if_contains<Elt, List, T>::type 
+	// testEnableIfContains_testF()
+	// { 
+	// 	return false; 
+	// }
+
+	// template <class Elt, class List = List1, class T = bool>
+	// typename enable_if_contains<Elt, List, T>::type 
+	// testEnableIfContains_testF() 
+	// { 
+	// 	return true; 
+	// }
+
+
+	bool testEnableIfContains()
+	{
+		// TEST_ASSERT( (testEnableIfContains_testF<Atom<>>() == false) );
+		// TEST_ASSERT( (testEnableIfContains_testF<int>() == true) );
+	} 
+
 
 	virtual bool runTests() override
 	{
 		testList(); 
 		testContains();
+		testEnableIfContains(); 
 	}
 };
 

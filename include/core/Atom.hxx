@@ -6,12 +6,10 @@
 
 template <class ...Spices> 
 class Atom : public enable_if<
-						meta_or<
-							is_spice<Spices ...>::value,
-							is_empty<Spices ...>::value
-							>::value,
-						Spice
-					>::type
+							(is_spice<Spices ...>::value 
+							|| is_empty<Spices ...>::value),
+							Spice
+						>::type
 { 
 	using Masala = List<Spices ...>;
 }; 
