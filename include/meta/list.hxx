@@ -43,11 +43,25 @@ template <class Elt>
 struct contains<Elt, NIL> : false_type
 {};
 
+
 template <class Elt, class Lst, class T = void>
-struct enable_if_contains : conditional< contains<Elt, Lst>::value, 
+using enable_if_contains = typename conditional< contains<Elt, Lst>::value, 
 										 t_type<T>, 
-										 empty_type<T> >::type
-{};
+										 empty_type<T>
+										>::type ; 
+
+template <class Elt, class Lst, class T = void>
+using enable_if_not_contains = typename conditional<contains<Elt, Lst>::value, 
+													empty_type<T>,
+													t_type<T>
+												>::type; 
+
+// [FIXME]
+// template <class Elt, class Lst, class T = void>
+// struct enable_if_contains : conditional< contains<Elt, Lst>::value, 
+// 										 t_type<T>, 
+// 										 empty_type<T> >::type
+// {};
 
 
 #endif
