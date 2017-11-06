@@ -26,26 +26,26 @@ struct List<H>
 };
 
 template <class Elt, class Lst>
-struct find : std::conditional< meta_or< 
-										equals< 
-											Elt, 
-											typename Lst::Head
-										>:: value, 
-										find<Elt, 
-											typename Lst::Tail
-										>::value
-								>::value, 
-								true_type, 
-								false_type
-						>::type
+struct contains : 	conditional< meta_or< 
+									equals< 
+										Elt, 
+										typename Lst::Head
+									>:: value, 
+									contains<Elt, 
+										typename Lst::Tail
+									>::value
+							>::value, 
+							true_type, 
+							false_type
+					>::type
 {};
 
 template <class Elt>
-struct find<Elt, NIL> : false_type
+struct contains<Elt, NIL> : false_type
 {};
 
 template <class Elt, class Lst, class Type = void>
-struct enable_if_found : enable_if< find<Elt, Lst>::value, Type >::type
+struct enable_if_found : enable_if< contains<Elt, Lst>::value, Type >::type
 {};
 
 #endif

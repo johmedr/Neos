@@ -1,10 +1,10 @@
-#ifndef TEST_DATA_STRUCTURE_HXX
-#define TEST_DATA_STRUCTURE_HXX 
+#ifndef TEST_LIST_HXX
+#define TEST_LIST_HXX 
 
 #include "../../include/test/all.hxx"
 #include "../../include/meta/all.hxx"
 
-struct TestDataStructure : public TestAtom 
+struct TestList : public TestAtom 
 {
 	bool testList() 
 	{
@@ -26,11 +26,11 @@ struct TestDataStructure : public TestAtom
 						>::value == true) ); 
 	} 
 
-	bool testFind() 
+	bool testContains() 
 	{
-		TEST_ASSERT( (find<int, List<>>::value == false) ); 
-		TEST_ASSERT( (find<float, List<int, char, bool>>::value == false) ); 
-		TEST_ASSERT( (find<char, List<Atom<>, Spice, char, bool>>::value == true) ); 
+		TEST_ASSERT( (contains<int, List<>>::value == false) ); 
+		TEST_ASSERT( (contains<float, List<int, char, bool>>::value == false) ); 
+		TEST_ASSERT( (contains<char, List<Atom<>, Spice, char, bool>>::value == true) ); 
 	}
 
 	bool testEnableIfFound() 
@@ -40,7 +40,7 @@ struct TestDataStructure : public TestAtom
 	virtual bool runTests() override
 	{
 		testList(); 
-		testFind();
+		testContains();
 	}
 };
 

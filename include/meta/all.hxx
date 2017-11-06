@@ -1,10 +1,12 @@
 #ifndef ALL_HXX
 #define ALL_HXX
 
+// namespace meta 
+// {
 #include "./conditions.hxx"
-#include "./base_types.hxx"
+#include "./list.hxx"
 #include "./spice_utils.hxx"
 #include "./variadic.hxx"
-#include "./data_structure.hxx"
+// }
 
 #endif
