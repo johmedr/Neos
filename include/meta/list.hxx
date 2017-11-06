@@ -26,13 +26,8 @@ struct List<H>
 };
 
 template <class Elt, class Lst>
-struct contains : 	conditional<(   equals< 
-										Elt, 
-										typename Lst::Head
-									>:: value
-								|| 	contains<Elt, 
-										typename Lst::Tail
-									>::value
+struct contains : 	conditional<(	equals< Elt, typename Lst::Head>:: value
+								|| 	contains<Elt, typename Lst::Tail>::value
 								), 
 								true_type, 
 								false_type

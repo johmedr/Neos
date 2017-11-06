@@ -24,26 +24,24 @@ struct equals<T, T> : true_type
 {};
 
 template <bool B, class T, class U = void>
-struct conditional
-{
-	using type = U; 
-};
+struct conditional : t_type<U>
+{};
 
 template <class T, class U>
-struct conditional<true, T, U>
-{
-	using type = T; 
-};
+struct conditional<true, T, U> : t_type<T>
+{};
 
-template <bool Condition, class T = void> 
-struct enable_if 
+template <bool B, class T = void> 
+struct enable_if : conditional<
+						B, 
+						t_type<T>, 
+						empty_type<>
+					>::type 
 {}; 
 
 template <class T>
-struct enable_if<true, T>
-{
-	using type = T;  
-};
+struct enable_if<true, T> : t_type<T>
+{};
 
 // template <bool ...Vars>
 // struct meta_and : conditional< (Vars && ...), 
