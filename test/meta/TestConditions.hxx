@@ -26,6 +26,14 @@ struct TestConditions : public TestAtom
 	// 	TEST_ASSERT( (meta_or<true, false, false, false>::value == true) ); 
 	// }
 
+	bool testConditional()
+	{
+		using ConditionalResult1 = typename conditional<false, true_type, false_type>::type; 
+		using ConditionalResult2 = typename conditional<true, true_type, false_type>::type; 
+
+		TEST_ASSERT( (ConditionalResult1::value == false) );
+		TEST_ASSERT( (ConditionalResult2::value == true) ); 
+	}
 
 	bool testAreDerivedFrom() 
 	{
@@ -53,6 +61,7 @@ struct TestConditions : public TestAtom
 	{
 		// testMetaAnd(); 
 		// testMetaOr(); 
+		testConditional();
 		testAreDerivedFrom(); 
 		testIsEmpty(); 
 		testEquals(); 
