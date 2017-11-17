@@ -6,9 +6,8 @@
 
 template <class ...Spices> 
 class Atom : public enable_if<
-							// (is_spice<Spices ...>::value 
-							// || is_empty<Spices ...>::value),
-							true, 
+							(is_spice<Spices ...>::value 
+							|| is_empty<Spices ...>::value),
 							Spice
 						>::type
 { 
@@ -35,20 +34,6 @@ public:
 		return false;
 	}
 
-	
-	template <class T = int, class U = bool>
-	IfMasalaNotContains_t<T, U>
-	operator() ()
-	{
-		return false; 
-	}
-
-	template <class T = int, class U = bool>
-	IfMasalaContains_t<T, U>
-	operator() ()
-	{
-		return true; 
-	}
 }; 
 
 #endif
