@@ -20,6 +20,21 @@ public:
 
 	template <class S, class T>
 	using IfMasalaNotContains_t = typename enable_if_not_contains<S, Masala, T>::type; 
+
+	template <class T> 
+	IfMasalaContains_t<T, bool> 
+	__contains__() 
+	{
+		return true; 
+	}
+
+	template <class T>
+	IfMasalaNotContains_t<T, bool>
+	__contains__() 
+	{
+		return false;
+	}
+
 	
 	template <class T = int, class U = bool>
 	IfMasalaNotContains_t<T, U>

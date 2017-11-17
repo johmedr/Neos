@@ -6,6 +6,7 @@
 
 struct TestList : public TestAtom 
 {
+private: 
 	bool testList() 
 	{
 		TEST_ASSERT( (equals<
@@ -57,7 +58,7 @@ struct TestList : public TestAtom
 		TEST_ASSERT( (testEnableIfContains_testF<int>() == true) );
 	} 
 
-
+public: 
 	virtual bool runTests() override
 	{
 		testList(); 

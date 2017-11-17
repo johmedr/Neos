@@ -6,6 +6,7 @@
 
 struct TestVariadic : public TestAtom
 {
+public:
 	virtual bool runTests() override
 	{
 		TEST_ASSERT( (va_contains<int, char, bool, long>::value == false) ); 

@@ -1,9 +1,11 @@
 #ifndef TESTMACRO_HXX
 #define TESTMACRO_HXX
 
+#include <iostream>
+
 #define PRINTLN(str) std::cout << str << std::endl; 
 #define TEST_ASSERT(expr) 						\
-	if(! expr) 									\
+	if(! (expr) )									\
 	{											\
 		PRINTLN(#expr << " : test failed !"); 	\
 		exit(0); 								\

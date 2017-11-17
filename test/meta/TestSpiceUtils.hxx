@@ -9,6 +9,7 @@
 
 struct TestSpiceUtils : public TestAtom
 {
+public:
 	virtual bool runTests() override
 	{
 		TEST_ASSERT(is_spice<>::value == false); 

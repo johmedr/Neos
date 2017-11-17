@@ -25,7 +25,7 @@ struct TestConditions : public TestAtom
 	// 	TEST_ASSERT( (meta_or<false, false, false>::value == false) ); 
 	// 	TEST_ASSERT( (meta_or<true, false, false, false>::value == true) ); 
 	// }
-
+private: 
 	bool testConditional()
 	{
 		using ConditionalResult1 = typename conditional<false, true_type, false_type>::type; 
@@ -57,6 +57,7 @@ struct TestConditions : public TestAtom
 		TEST_ASSERT( (equals<char, char>::value == true) ); 
 	}
 
+public:
 	virtual bool runTests() override 
 	{
 		// testMetaAnd(); 
