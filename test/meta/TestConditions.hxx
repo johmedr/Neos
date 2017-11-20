@@ -19,22 +19,22 @@ private:
 	bool testAreDerivedFrom() 
 	{
 		TEST_ASSERT( (are_derived_from<int, float>::value == false) ); 
-		TEST_ASSERT( (are_derived_from<Spice, Atom<>>::value == true) ); 
+		TEST_ASSERT( (are_derived_from<Module, Atom<>>::value == true) ); 
 		TEST_ASSERT( (are_derived_from<int, float, char, bool>::value == false) );
-		TEST_ASSERT( (are_derived_from<Spice, Atom<>, TestAtom>::value == true) );  
+		TEST_ASSERT( (are_derived_from<Module, Atom<>, TestAtom>::value == true) );  
 	}
 
 	bool testIsEmpty() 
 	{
 		TEST_ASSERT( (is_empty<>::value == true) ); 
 		TEST_ASSERT( (is_empty<int>::value == false) ); 
-		TEST_ASSERT( (is_empty<int, float, char, Spice>::value == false) );
+		TEST_ASSERT( (is_empty<int, float, char, Module>::value == false) );
 	}
 
 	bool testEquals() 
 	{
 		TEST_ASSERT( (equals<int, float>::value == false) ); 
-		TEST_ASSERT( (equals<Atom<>, Spice>::value == false) ); 
+		TEST_ASSERT( (equals<Atom<>, Module>::value == false) ); 
 		TEST_ASSERT( (equals<char, char>::value == true) ); 
 	}
 

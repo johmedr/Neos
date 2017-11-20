@@ -11,7 +11,7 @@ private:
 	{
 		Atom<> a1; 
 		Atom<int, char> a2; 
-		Atom<Spice, bool, unsigned long> a3; 
+		Atom<Module, bool, unsigned long> a3; 
 
 		TEST_ASSERT( (a1.__contains__<int>() == false) );
 
@@ -19,7 +19,7 @@ private:
 		TEST_ASSERT( (a2.__contains__<char>() == true) ); 
 		TEST_ASSERT( (a2.__contains__<bool>() == false) );
 
-		TEST_ASSERT( (a3.__contains__<Spice>() == true) ); 
+		TEST_ASSERT( (a3.__contains__<Module>() == true) ); 
 		TEST_ASSERT( (a3.__contains__<Atom<>>() == false) ); 
 	}
 

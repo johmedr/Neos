@@ -2,33 +2,33 @@
 #define ATOM_HXX
 
 #include "../meta/all.hxx"
-#include "./Spice.hxx"
+#include "./Module.hxx"
 
-template <class ...Spice> 
-class Atom : public enable_if<
-							(is_spice<Spices ...>::value 
-							|| is_empty<Spices ...>::value),
-							Spice
+template <class ...Modules> 
+class Atom : public enable_if<true, 
+							// (is_module<Modules ...>::value 
+							// || is_empty<Modules ...>::value),
+							Module
 						>::type
 { 
 public:  
-	using Masala = List<Spices ...>;
+	using ModuleRegistry = List<Modules ...>;
 
-	template <class S, class T>
-	using IfMasalaContains_t = typename enable_if_contains<S, Masala, T>::type; 
+	template <class M, class T>
+	using IfContainsModule_t = typename enable_if_contains<M, ModuleRegistry, T>::type; 
 
-	template <class S, class T>
-	using IfMasalaNotContains_t = typename enable_if_not_contains<S, Masala, T>::type; 
+	template <class M, class T>
+	using IfNotContainsModule_t = typename enable_if_not_contains<M, ModuleRegistry, T>::type; 
 
 	template <class T> 
-	IfMasalaContains_t<T, bool> 
+	IfContainsModule_t<T, bool> 
 	__contains__() 
 	{
 		return true; 
 	}
 
 	template <class T>
-	IfMasalaNotContains_t<T, bool>
+	IfNotContainsModule_t<T, bool>
 	__contains__() 
 	{
 		return false;
