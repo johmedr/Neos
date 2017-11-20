@@ -39,6 +39,17 @@ private:
 		c_mod_conf c; 
 	};
 
+	bool testAtomStatic()
+	{
+		using a1 = Atom<a_mod>;
+		using a2 = Atom<a_mod, abis_mod>; 
+		using b = Atom<b_mod>; 
+
+		TEST_ASSERT( (a1::a == true) );
+		TEST_ASSERT( (a2::a_mod::a == true) );
+		TEST_ASSERT( (a2::abis_mod::a == false) );
+		TEST_ASSERT( (b::f() == true) ); 
+	}
 
 	bool testAtomDynamic()
 	{
@@ -46,6 +57,13 @@ private:
 		atc.c.c_val = 5;  
 		TEST_ASSERT( (atc.c.c_val == 5) ); 
 		TEST_ASSERT( (atc.c.c_func() == true) ); 
+	}
+
+	bool testAtomicModuleOverlay()
+	{
+		using at = Atom<a_mod, abis_mod>; 
+		TEST_ASSERT( (at::a_mod::a == true) );
+		TEST_ASSERT( (at::abis_mod::a == false) );
 	}
 
 	bool testAtomContains() 
@@ -64,16 +82,11 @@ private:
 		TEST_ASSERT( (a3.__contains__<Atom<>>() == false) ); 
 	}
 
-	bool testAtomicModuleOverlay()
-	{
-		using at = Atom<a_mod, abis_mod>; 
-		TEST_ASSERT( (at::a_mod::a == true) );
-		TEST_ASSERT( (at::abis_mod::a == false) );
-	}
 
 public: 
 	virtual bool runTests() override
 	{
+		testAtomStatic(); 
 		testAtomDynamic();
 		testAtomicModuleOverlay(); 
 		testAtomContains(); 
