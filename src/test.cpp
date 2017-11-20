@@ -2,7 +2,6 @@
 #include <cstdlib>
 
 #include "../include/meta/conditions.hxx"
-	
 
 struct Module
 {}; 
@@ -26,10 +25,41 @@ struct Mod<char>
 	void f2(char b) {}
 };
 
+template <class C1, class ...C> 
+struct Atom;
 
-template <class ...M>
-struct Atom :  M... // Solution 
-{}; 
+	// Atom< int, char, bool > 
+	// : compose_atom<Atom< 
+	// 	int, 
+	// 	: compose_atom<Atom< 
+	// 		char, 
+	// 		: compose_atom<
+	// 			bool >
+	// 		type = bool
+	// 	type = Atom<char, bool>
+	// type = Atom<int, char, bool> 
+
+template <class H, class ...T> 				  
+struct compose_atom : t_type< Atom< H, 
+									typename compose_atom<T...>::type
+								>
+							>
+{};
+
+template <class H>
+struct compose_atom<H> : t_type<Atom<H>>
+{};
+
+template <class H = Module, class ...M> 
+struct Atom : enable_if< 
+					true,
+					H>::type
+// struct Atom : conditional<is_empty<M...>::value, Module, typename compose_atom<M...>::type>::type
+{};
+
+// template <class ...M>
+// struct Atom :  M... // Solution 
+// {}; 
 
 
 struct mayia_static_mod : Module 
@@ -62,7 +92,6 @@ struct mayia_dynamic_mod : Module
 
 	mayia_dynamic_conf mayia_dynamic; 
 }; 
-
 
 int main() 
 {
