@@ -1,6 +1,7 @@
 #ifndef TESTCONDITIONS_HXX
 #define TESTCONDITIONS_HXX
 
+#include "../../include/core/all.hxx"
 #include "../../include/test/all.hxx"
 #include "../../include/meta/all.hxx"
 

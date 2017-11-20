@@ -3,6 +3,8 @@
 
 int main()
 {
+	Atom<> at; 
+
 	TestAllMeta tam; 
 	tam.runTests(); 
 
