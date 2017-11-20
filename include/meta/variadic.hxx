@@ -3,7 +3,6 @@
 
 #include "base_types.hxx"
 #include "conditions.hxx"
-#include "spice_utils.hxx"
 
 template <class Elt, class First, class ...Rest>
 struct va_contains : conditional<

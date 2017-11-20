@@ -5,7 +5,7 @@
 // {
 #include "./conditions.hxx"
 #include "./list.hxx"
-#include "./spice_utils.hxx"
+#include "./module_utils.hxx"
 #include "./variadic.hxx"
 // }
 

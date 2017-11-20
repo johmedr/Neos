@@ -2,6 +2,6 @@
 #define COREALL_HXX
 
 #include "Atom.hxx"
-#include "Spice.hxx"
+#include "Module.hxx"
 
 #endif

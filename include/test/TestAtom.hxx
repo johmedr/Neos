@@ -5,6 +5,7 @@
 
 struct TestAtom : public Atom<>
 {
+public: 
 	virtual bool runTests() = 0; 
 };
 

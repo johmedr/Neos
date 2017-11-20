@@ -6,6 +6,7 @@
 
 struct TestList : public TestAtom 
 {
+private: 
 	bool testList() 
 	{
 		TEST_ASSERT( (equals<
@@ -21,7 +22,7 @@ struct TestList : public TestAtom
 							List<char, long, float>
 						>::value == true) );
 		TEST_ASSERT( (equals<
-							typename List<Spice>::Tail, 
+							typename List<Module>::Tail, 
 							NIL
 						>::value == true) ); 
 	} 
@@ -30,10 +31,10 @@ struct TestList : public TestAtom
 	{
 		TEST_ASSERT( (contains<int, List<>>::value == false) ); 
 		TEST_ASSERT( (contains<float, List<int, char, bool>>::value == false) ); 
-		TEST_ASSERT( (contains<char, List<Atom<>, Spice, char, bool>>::value == true) ); 
+		TEST_ASSERT( (contains<char, List<Atom<>, Module, char, bool>>::value == true) ); 
 	}
 
-	using List1 = List<int, char, Spice>; 
+	using List1 = List<int, char, Module>; 
 
 
 	template <class Elt, class List = List1, class T = bool>
@@ -57,7 +58,7 @@ struct TestList : public TestAtom
 		TEST_ASSERT( (testEnableIfContains_testF<int>() == true) );
 	} 
 
-
+public: 
 	virtual bool runTests() override
 	{
 		testList(); 

@@ -6,10 +6,11 @@
 
 struct TestVariadic : public TestAtom
 {
+public:
 	virtual bool runTests() override
 	{
 		TEST_ASSERT( (va_contains<int, char, bool, long>::value == false) ); 
-		TEST_ASSERT( (va_contains<Atom<>, char, Spice, long, Atom<>>::value == true) );
+		TEST_ASSERT( (va_contains<Atom<>, char, Module, long, Atom<>>::value == true) );
 	}
 };
 

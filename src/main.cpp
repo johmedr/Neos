@@ -1,20 +1,10 @@
 #include "../include/core/Atom.hxx"
-#include "../test/meta/TestSpiceUtils.hxx"
-#include "../test/meta/TestVariadic.hxx"
-#include "../test/meta/TestList.hxx"
-#include "../test/meta/TestConditions.hxx"
+#include "../test/meta/TestAllMeta.hxx"
 
 int main()
 {
-	TestSpiceUtils tsu; 
-	TestVariadic tv; 
-	TestList tds; 
-	TestConditions tc; 
-	tsu.runTests(); 
-	tv.runTests();
-	tds.runTests();
-	tc.runTests();
+	TestAllMeta tam; 
+	tam.runTests(); 
 
-	Atom<> atom; 
 	return 0;
 }

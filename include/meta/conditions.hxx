@@ -43,28 +43,6 @@ template <class T>
 struct enable_if<true, T> : t_type<T>
 {};
 
-// template <bool ...Vars>
-// struct meta_and : conditional< (Vars && ...), 
-// 								true_type, 
-// 								false_type
-// 							>::type
-// {};
-
-// template <> 
-// struct meta_and<> : false_type
-// {};
-
-// template <bool ...Vars>
-// struct meta_or : conditional< ( Vars || ... ),
-// 								true_type, 
-// 								false_type
-// 							>::type
-// {};
-
-// template <>
-// struct meta_or<> : false_type
-// {};
-
 template <class Base, class FirstSon, class ...Sons>
 struct are_derived_from : conditional<
 								(std::is_base_of<Base, FirstSon>::value 
