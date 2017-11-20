@@ -4,14 +4,14 @@
 #include "../meta/all.hxx"
 #include "./Spice.hxx"
 
-template <class ...Spices> 
+template <class ...Spice> 
 class Atom : public enable_if<
 							(is_spice<Spices ...>::value 
 							|| is_empty<Spices ...>::value),
 							Spice
 						>::type
 { 
-public: 
+public:  
 	using Masala = List<Spices ...>;
 
 	template <class S, class T>

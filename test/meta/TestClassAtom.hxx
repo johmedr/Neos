@@ -7,7 +7,7 @@
 class TestClassAtom : public TestAtom
 {
 private: 
-	bool testAtom__contains__() 
+	bool testAtomContains() 
 	{
 		Atom<> a1; 
 		Atom<int, char> a2; 
@@ -26,7 +26,7 @@ private:
 public: 
 	virtual bool runTests() override
 	{
-		testAtom__contains__(); 
+		testAtomContains(); 
 	}
 };
 

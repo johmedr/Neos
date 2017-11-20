@@ -5,6 +5,8 @@
 #include "./base_types.hxx"
 #include <type_traits>
 
+// introduce constraints list 
+
 struct NIL 
 {
 	using Head = NIL; 
