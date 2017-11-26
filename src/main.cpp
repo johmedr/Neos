@@ -4,7 +4,6 @@
 int main()
 {
 	Atom<> at; 
-
 	
 	std::cout << std::boolalpha;
 
