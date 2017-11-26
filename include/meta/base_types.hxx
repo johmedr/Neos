@@ -1,15 +1,32 @@
 #ifndef METABASETYPES_HXX
 #define METABASETYPES_HXX
 
-struct true_type 
+template <bool B> 
+struct bool_type 
 {
-	static constexpr bool value = true; 
+	static constexpr bool value = B; 
 };
 
-struct false_type
+struct true_type : public bool_type<true>
+{};
+
+struct false_type : public bool_type<false>
+{};
+
+template <bool B>
+struct bool_func 
 {
-	static constexpr bool value = false; 
+	constexpr bool operator() () 
+	{
+		return B; 
+	}
 };
+
+struct true_func : bool_func<true>
+{}; 
+
+struct false_func : bool_func<false>
+{};
 
 template <class ...>
 struct empty_type

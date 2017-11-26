@@ -28,7 +28,7 @@ struct List<H>
 };
 
 template <class Elt, class Lst>
-struct contains : 	conditional< (	equals< Elt, typename Lst::Head>:: value
+struct contains : public conditional< (	equals< Elt, typename Lst::Head>:: value
 								 || contains<Elt, typename Lst::Tail>::value
 								 ), 
 								 true_type, 
@@ -37,7 +37,7 @@ struct contains : 	conditional< (	equals< Elt, typename Lst::Head>:: value
 {};
 
 template <class Elt>
-struct contains<Elt, NIL> : false_type
+struct contains<Elt, NIL> : public false_type
 {};
 
 
