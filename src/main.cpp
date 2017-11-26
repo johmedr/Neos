@@ -5,6 +5,9 @@ int main()
 {
 	Atom<> at; 
 
+	
+	std::cout << std::boolalpha;
+
 	TestAllMeta tam; 
 	tam.runTests(); 
 

@@ -4,7 +4,15 @@
 #include "../meta/conditions.hxx"
 #include "../meta/list.hxx"
 
-class Module; 
+
+namespace __core__
+{
+	template <class ...Ms> 
+	class __atom__ : public Ms...
+	{};
+};
+
+using Module = __core__::__atom__<>;
 
 template <class ...M>
 struct is_module : conditional<
@@ -24,19 +32,5 @@ using ModList = typename enable_if<
 							|| is_empty<Ms...>::value, 
 							List<Ms...>
 						>::type; 
-
-class Module
-{
-	template <class ...Ms>
-	struct __requires__ : ModList<Ms...>
-	{}; 
-
-	template <class ...Ms>
-	struct __narrows__ : ModList<Ms...>
-	{};
-
-	template <class ...Ms> 
-	struct __provides__ : ModList<Ms...>
-	{}; 
-}; 
+						
 #endif 
