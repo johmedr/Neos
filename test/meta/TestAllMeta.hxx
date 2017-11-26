@@ -4,7 +4,7 @@
 #include "TestClassAtom.hxx"
 #include "TestConditions.hxx"
 #include "TestList.hxx"
-#include "TestModuleUtils.hxx"
+#include "TestModule.hxx"
 #include "TestVariadic.hxx"
 
 class TestAllMeta : public TestAtom 
@@ -15,7 +15,7 @@ public:
 		TestClassAtom tca; 
 		TestConditions tc; 
 		TestList tl; 
-		TestModuleUtils tmu; 
+		TestModule tmu; 
 		TestVariadic tv;
 
 		tca.runTests(); 

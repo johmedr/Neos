@@ -11,7 +11,7 @@ namespace __core__
 	class __atom__ : public Ms...
 	{
 	public:
-		using ModuleRegistry = List<Ms ...>;
+		using ModuleRegistry = ModList<Ms ...>;
 
 		template <class M, class T>
 		using IfContainsModule_t = typename enable_if_contains<M, ModuleRegistry, T>::type; 
@@ -40,13 +40,12 @@ template <class ...Ms>
 class Atom : public enable_if<// An Atom inherits __atom__ if Ms are Modules
 							(is_module<Ms ...>::value 
 							|| is_empty<Ms ...>::value),
-							__core__::__atom__<
-								Ms...
-							>
+							typename conditional<
+								is_empty<Ms...>::value, 
+								__core__::__atom__<Module>, 
+								__core__::__atom__<Ms...>
+							>::type
 						>::type
-{ 
-public:  
-	
-}; 
+{}; 
 
 #endif
