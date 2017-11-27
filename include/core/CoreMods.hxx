@@ -18,24 +18,54 @@ namespace __core__
 	template <class ...M>
 	struct core : Module
 	{
-	protected:
 		template <class ...Ms>
 		struct requires : Module 
 		{
-			using __requirements__ = ModList<Ms...>; 
+		protected:
+			using __requires__ = ModList<Ms...>; 
 		};
 
 		template <class ...Ms>
 		struct restricts : Module 
 		{
-			using __restrictions__ = ModList<Ms...>; 
+		protected:
+			using __restricts__ = ModList<Ms...>; 
 		};
 
 		template <class ...Ms>
 		struct provides : Module
 		{
-			using __provisions__ = ModList<Ms...>;
+		protected:
+			using __provides__ = ModList<Ms...>;
 		};
+
+		// template <class ...Args>
+		// struct variable : Module
+		// {
+			
+		// };
+
+		template <class ...Args>
+		struct inputs : Module
+		{
+		protected:
+			using __inputs__ = ModList<Ms...>; 
+		};
+
+		template <class ...Args> 
+		struct outputs : Module
+		{
+		protected: 
+			using __outputs__ = ModList<Ms...>;
+		};
+
+
+	};
+
+	template <class ...M>
+	struct test : Module
+	{
+
 	};
 
 	template <class ...Ms>

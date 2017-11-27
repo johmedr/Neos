@@ -1,8 +1,10 @@
 #ifndef METADATASTRUCTURE_HXX
 #define METADATASTRUCTURE_HXX
 
+#include "../core/Module.hxx"
 #include "./conditions.hxx"
 #include "./base_types.hxx"
+
 #include <type_traits>
 
 // introduce constraints list 
@@ -54,6 +56,14 @@ using enable_if_not_contains = typename conditional< contains<Elt, Lst>::value,
 													>::type; 
 
 
+
+template <class ...Ms> 
+using ModList = typename enable_if< 
+							is_module<Ms...>::value 
+							|| is_empty<Ms...>::value, 
+							List<Ms...>
+						>::type; 
+						
 
 
 #endif

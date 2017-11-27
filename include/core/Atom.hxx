@@ -1,9 +1,10 @@
 #ifndef ATOM_HXX
 #define ATOM_HXX
 
-#include "../meta/all.hxx"
+
 #include "./Module.hxx"
 #include "./CoreMods.hxx"
+#include "../meta/all.hxx"
 
 // __atom__ inherit Module, as Ms are Modules (checked below)
 // Atom is the interface
