@@ -10,11 +10,6 @@ private:
 		static const bool a = true; 
 	};
 
-	struct abis_mod : Module
-	{
-		static const bool a = false; 
-	};
-
 	struct b_mod : Module 
 	{	
 		static constexpr bool f() 
