@@ -62,7 +62,7 @@ private:
 	bool testAtomRequires() 
 	{
 		using a1 = Atom<requires<>>; 
-		using a2 = Atom<requires<a_mod, b_mod>>; 
+		using a2 = Atom<requires<a_mod, b_mod>, a_mod, b_mod>; 
 		using a3 = Atom<requires<a_mod, b_mod, c_mod>>; 
 
 		TEST_ASSERT( (equals<a1::__requires__, ModList<>>::value == true) );
