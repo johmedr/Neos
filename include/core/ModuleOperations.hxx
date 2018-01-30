@@ -4,7 +4,6 @@
 #include <meta/list.hxx>
 #include <meta/conditions.hxx>
 
-
 template <class ...M>
 struct is_module : conditional<
 						are_derived_from<Module, M...>::value, 

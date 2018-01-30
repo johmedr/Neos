@@ -18,9 +18,7 @@ namespace __core__
 
 	};
 
-	template <class ...M>
-	struct __coremods__ : CORE_MODS_DEFAULT_VIRTUALITY CORE_MODS_DEFAULT_INHERITANCE Module
-	// struct __default__ : CORE_MODS_DEFAULT_VIRTUALITY CORE_MODS_DEFAULT_INHERITANCE Module
+	struct coremods
 	{
 		template <class ...Ms>
 		struct requires : CORE_MODS_DEFAULT_VIRTUALITY CORE_MODS_DEFAULT_INHERITANCE Module 
@@ -28,7 +26,15 @@ namespace __core__
 		CORE_MODS_DEFAULT_SCOPE:
 			using __requires__ = ModList<Ms...>; 
 		};
+	};
 
+	// Create a namespace coremods inside the class using the virtual public inherit
+	template <class ...M>
+	struct __coremods__ : virtual public coremods
+	// struct __default__ : CORE_MODS_DEFAULT_VIRTUALITY CORE_MODS_DEFAULT_INHERITANCE Module
+	{
+		
+		
 		template <class ...Ms>
 		struct restricts : CORE_MODS_DEFAULT_VIRTUALITY CORE_MODS_DEFAULT_INHERITANCE Module 
 		{
