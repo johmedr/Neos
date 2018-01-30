@@ -31,6 +31,21 @@ private:
 		TEST_ASSERT( (contains<char, List<Atom<>, Module, char, bool>>::value == true) ); 
 	}
 
+	bool testIsSubsetOf()
+	{
+		TEST_ASSERT( (is_sublist_of<List<int, float, char>, List<>>::value == false) ); 
+		TEST_ASSERT( (is_sublist_of<List<int, float, char>, List<float, char, bool, bool>>::value == false) ); 
+		TEST_ASSERT( (is_sublist_of<List<int, float, char>, List<float, char, int, bool>>::value == true) ); 
+	}
+
+	bool testAreDisjoint() 
+	{
+		TEST_ASSERT( (are_disjoint<List<int, float, char>, List<>>::value == true) );
+		TEST_ASSERT( (are_disjoint<List<>, List<int, float, char>>::value == true) );
+		TEST_ASSERT( (are_disjoint<List<int, float, char>, List<float, char, bool, bool>>::value == false) ); 
+		TEST_ASSERT( (are_disjoint<List<int, float, char>, List<long, double, bool>>::value == true) ); 
+	}
+
 	using List1 = List<int, char, Module>; 
 
 
@@ -60,6 +75,8 @@ public:
 	{
 		testList(); 
 		testContains();
+		testIsSubsetOf();
+		testAreDisjoint();
 		testEnableIfContains(); 
 	}
 };

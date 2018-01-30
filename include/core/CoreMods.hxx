@@ -4,6 +4,8 @@
 #include <core/CoreMetaDefaultConfig.hxx>
 #include <core/Module.hxx>
 #include <core/ModuleOperations.hxx>
+#include <meta/assert.hxx>
+#include <meta/list.hxx>
 
 namespace __core__
 {
@@ -26,7 +28,13 @@ namespace __core__
 		struct requires : CORE_MODS_DEFAULT_VIRTUALITY CORE_MODS_DEFAULT_INHERITANCE Module 
 		{
 		CORE_MODS_DEFAULT_SCOPE:
-			using __requires__ = ModList<Ms...>; 
+			using __requires__ = ModList<Ms...>;
+			using __requirements_check_assert__ = typename Assert<
+																is_sublist_of<
+																	__requires__, 
+																	typename __arch__<Ms...>::__registry__
+																>::value
+															>::result; 
 		};
 		
 		template <class ...Ms>
@@ -34,6 +42,13 @@ namespace __core__
 		{
 		CORE_MODS_DEFAULT_SCOPE:
 			using __restricts__ = ModList<Ms...>; 
+			
+			// using __restrictions_check_assert__ = typename Assert<
+			// 													are_disjoint<
+			// 														__restricts__, 
+			// 														typename __arch__<Ms...>::__registry__
+			// 													>::value
+			// 												>::result; 
 		};
 
 		template <class ...Ms>
