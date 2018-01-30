@@ -1,13 +1,8 @@
-#ifndef TESTSPICEUTILS_HXX
-#define TESTSPICEUTILS_HXX
-
 #include "../../include/core/all.hxx"
 #include "../../include/meta/all.hxx"
 #include "../../include/test/all.hxx"
 
-#include <iostream>
-
-struct TestModule : public TestAtom
+class TestModule : public TestAtom
 {
 public:
 	virtual bool runTests() override
@@ -22,4 +17,8 @@ public:
 	}
 };
 
-#endif
+int main() 
+{
+	TestModule tm; 
+	tm.runTests(); 
+}

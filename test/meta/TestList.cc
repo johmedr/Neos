@@ -1,6 +1,3 @@
-#ifndef TEST_LIST_HXX
-#define TEST_LIST_HXX 
-
 #include "../../include/test/all.hxx"
 #include "../../include/meta/all.hxx"
 
@@ -67,4 +64,8 @@ public:
 	}
 };
 
-#endif
+int main() 
+{
+	TestList tl; 
+	tl.runTests(); 
+}

@@ -1,6 +1,3 @@
-#ifndef TESTCLASSATOM_HXX
-#define TESTCLASSATOM_HXX
-
 #include "../../include/test/all.hxx"
 #include "../../include/core/all.hxx"
 
@@ -93,5 +90,8 @@ public:
 	}
 };
 
-
-#endif
+int main() 
+{
+	TestClassAtom tca; 
+	tca.runTests(); 
+}

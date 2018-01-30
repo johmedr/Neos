@@ -1,5 +1,4 @@
 #include "../include/core/Atom.hxx"
-#include "../test/meta/TestAllMeta.hxx"
 
 int main()
 {
@@ -7,9 +6,6 @@ int main()
 
 	
 	std::cout << std::boolalpha;
-
-	TestAllMeta tam; 
-	tam.runTests(); 
 
 	return 0;
 }

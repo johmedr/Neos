@@ -1,6 +1,3 @@
-#ifndef TEST_VARIADIC
-#define TEST_VARIADIC
-
 #include "../../include/meta/all.hxx"
 #include "../../include/test/all.hxx"
 
@@ -14,4 +11,9 @@ public:
 	}
 };
 
-#endif
+
+int main() 
+{
+	TestVariadic tv; 
+	tv.runTests(); 
+}
