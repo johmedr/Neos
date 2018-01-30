@@ -3,12 +3,12 @@
 
 #include <iostream>
 
-#define PRINTLN(str) std::cout << str << std::endl; 
+#define PRINTLN(str) std::cerr << str << std::endl; 
 #define TEST_ASSERT(expr) 						\
 	if(! (expr) )									\
 	{											\
 		PRINTLN(#expr << " : test failed !"); 	\
-		exit(0); 								\
+		exit(1); 								\
 	}
 
 
