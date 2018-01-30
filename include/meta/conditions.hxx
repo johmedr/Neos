@@ -1,7 +1,7 @@
 #ifndef METACONDITIONS_HXX
 #define METACONDITIONS_HXX
 
-#include "base_types.hxx"
+#include <meta/base_types.hxx>
 #include <type_traits>
 
 template <class ...> 
@@ -58,18 +58,6 @@ struct are_derived_from<Base, LastSon> : conditional<
 												true_type, 
 												false_type
 											>::type
-{};
-
-template <class ...M>
-struct is_module : conditional<
-						are_derived_from<Module, M...>::value, 
-						true_type, 
-						false_type
-					>::type
-{};
-
-template <>
-struct is_module<> : false_type
 {};
 
 #endif 

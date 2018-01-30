@@ -1,8 +1,8 @@
-#include "../../include/core/all.hxx"
-#include "../../include/meta/all.hxx"
-#include "../../include/test/all.hxx"
+#include <core/all.hxx>
+#include <meta/all.hxx>
+#include <test/all.hxx>
 
-class TestModule : public TestAtom
+class TestModuleOperations : public TestAtom
 {
 public:
 	virtual bool runTests() override
@@ -19,6 +19,6 @@ public:
 
 int main() 
 {
-	TestModule tm; 
-	tm.runTests(); 
+	TestModuleOperations tmo; 
+	tmo.runTests(); 
 }

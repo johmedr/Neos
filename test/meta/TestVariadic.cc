@@ -1,5 +1,5 @@
-#include "../../include/meta/all.hxx"
-#include "../../include/test/all.hxx"
+#include <meta/all.hxx>
+#include <test/all.hxx>
 
 struct TestVariadic : public TestAtom
 {

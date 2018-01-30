@@ -3,9 +3,9 @@
 
 // namespace meta 
 // {
-#include "./conditions.hxx"
-#include "./list.hxx"
-#include "./variadic.hxx"
+#include <meta/conditions.hxx>
+#include <meta/list.hxx>
+#include <meta/variadic.hxx>
 // }
 
 #endif

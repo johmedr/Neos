@@ -1,41 +1,45 @@
 #ifndef COREMODS_HXX
 #define COREMODS_HXX
 
-#include "./Module.hxx"
+#include <core/CoreMetaDefaultConfig.hxx>
+#include <core/Module.hxx>
+#include <core/ModuleOperations.hxx>
 
 namespace __core__
 {
 	template <class ...Ms> 
-	struct arch : Module 
+	struct __arch__ : CORE_MODS_ARCH_VIRTUALITY CORE_MODS_ARCH_INHERITANCE Module 
 	{
-	protected: 
+	CORE_MODS_DEFAULT_SCOPE: 
 		using __registry__ = ModList<Ms...>; 
 		
 		template <class M> 
-		using __contains__ = contains<M, __registry__>; 
+		static const bool __contains__ = contains<M, __registry__>::value; 
+
 	};
 
 	template <class ...M>
-	struct core : Module
+	struct __coremods__ : CORE_MODS_DEFAULT_VIRTUALITY CORE_MODS_DEFAULT_INHERITANCE Module
+	// struct __default__ : CORE_MODS_DEFAULT_VIRTUALITY CORE_MODS_DEFAULT_INHERITANCE Module
 	{
 		template <class ...Ms>
-		struct requires : Module 
+		struct requires : CORE_MODS_DEFAULT_VIRTUALITY CORE_MODS_DEFAULT_INHERITANCE Module 
 		{
-		protected:
+		CORE_MODS_DEFAULT_SCOPE:
 			using __requires__ = ModList<Ms...>; 
 		};
 
 		template <class ...Ms>
-		struct restricts : Module 
+		struct restricts : CORE_MODS_DEFAULT_VIRTUALITY CORE_MODS_DEFAULT_INHERITANCE Module 
 		{
-		protected:
+		CORE_MODS_DEFAULT_SCOPE:
 			using __restricts__ = ModList<Ms...>; 
 		};
 
 		template <class ...Ms>
-		struct provides : Module
+		struct provides : CORE_MODS_DEFAULT_VIRTUALITY CORE_MODS_DEFAULT_INHERITANCE Module
 		{
-		protected:
+		CORE_MODS_DEFAULT_SCOPE:
 			using __provides__ = ModList<Ms...>;
 		};
 
@@ -45,34 +49,28 @@ namespace __core__
 			
 		// };
 
-		template <class ...Args>
-		struct inputs : Module
+		template <class ...Ms>
+		struct inputs : CORE_MODS_DEFAULT_VIRTUALITY CORE_MODS_DEFAULT_INHERITANCE Module
 		{
-		protected:
+		CORE_MODS_DEFAULT_SCOPE:
 			using __inputs__ = ModList<Ms...>; 
 		};
 
-		template <class ...Args> 
-		struct outputs : Module
+		template <class ...Ms> 
+		struct outputs : CORE_MODS_DEFAULT_VIRTUALITY CORE_MODS_DEFAULT_INHERITANCE Module
 		{
-		protected: 
+		CORE_MODS_DEFAULT_SCOPE: 
 			using __outputs__ = ModList<Ms...>;
 		};
 
 
 	};
 
-	template <class ...M>
-	struct test : Module
-	{
-
-	};
-
 	template <class ...Ms>
-	struct  __default__ : 
-		arch<Ms...>,
-		core<Ms...>
-	{}; 
+	struct __default__ : 
+		__arch__<Ms...>, 
+		__coremods__<Ms...>
+		{}; 
 }
 
 #endif

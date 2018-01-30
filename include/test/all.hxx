@@ -1,7 +1,7 @@
 #ifndef TESTALL_HXX
 #define TESTALL_HXX
 
-#include "./macro.hxx"
-#include "./TestAtom.hxx"
+#include <test/macro.hxx>
+#include <test/TestAtom.hxx>
 
 #endif

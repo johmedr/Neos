@@ -1,5 +1,5 @@
-#include "../../include/test/all.hxx"
-#include "../../include/meta/all.hxx"
+#include <test/all.hxx>
+#include <meta/all.hxx>
 
 struct TestList : public TestAtom 
 {

@@ -1,4 +1,4 @@
-#include "../include/core/Atom.hxx"
+#include <core/Atom.hxx>
 
 int main()
 {
