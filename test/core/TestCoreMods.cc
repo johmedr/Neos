@@ -6,5 +6,15 @@ class TestCoreMods : TestAtom
 {
 private: 
 
+
 public:
+	void runTests() 
+	{
+
+	}
+};
+
+int main() 
+{
+	
 }
