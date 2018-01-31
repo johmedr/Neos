@@ -32,7 +32,7 @@ namespace __core__
 			using __requirements_check_assert__ = typename Assert<
 																is_sublist_of<
 																	__requires__, 
-																	typename __arch__<Ms...>::__registry__
+																	typename __arch__<M...>::__registry__
 																>::value
 															>::result; 
 		};
@@ -42,7 +42,7 @@ namespace __core__
 		{
 		CORE_MODS_DEFAULT_SCOPE:
 			using __restricts__ = ModList<Ms...>; 
-			
+
 			// using __restrictions_check_assert__ = typename Assert<
 			// 													are_disjoint<
 			// 														__restricts__, 

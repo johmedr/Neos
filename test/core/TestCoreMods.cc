@@ -37,10 +37,12 @@ private:
 		using a1 = Atom<>; 
 		using a2 = Atom<a_mod, b_mod>; 
 		using a3 = Atom<a_mod, b_mod, c_mod>;
+		using a4 = Atom<a_mod, b_mod, a3>; 
 
 		TEST_ASSERT( (equals<a1::__registry__, ModList<>>::value == true) );
 		TEST_ASSERT( (equals<a2::__registry__, ModList<a_mod, b_mod>>::value == true) );
 		TEST_ASSERT( (equals<a3::__registry__, ModList<a_mod, b_mod, c_mod>>::value == true) );
+		TEST_ASSERT( (equals<a4::__registry__, ModList<a_mod, b_mod, c_mod>>::value == true) ); 
 	}
 
 	bool testAtomContains() 
@@ -63,7 +65,7 @@ private:
 	{
 		using a1 = Atom<requires<>>; 
 		using a2 = Atom<requires<a_mod, b_mod>, a_mod, b_mod>; 
-		using a3 = Atom<requires<a_mod, b_mod, c_mod>>; 
+		using a3 = Atom<requires<a_mod, b_mod, c_mod>, a_mod, b_mod, c_mod>; 
 
 		TEST_ASSERT( (equals<a1::__requires__, ModList<>>::value == true) );
 		TEST_ASSERT( (equals<a2::__requires__, ModList<a_mod, b_mod>>::value == true) ); 
