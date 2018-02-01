@@ -2,6 +2,7 @@
 #define __CONDITIONS__HXX
 
 #include <core/arch/__types__.hxx>
+#include <type_traits>
 
 namespace arch
 {
@@ -47,6 +48,24 @@ namespace arch
 	struct enable_if<true, T> : 
 		t_type<T>
 	{};
+
+	template <class Base, class FirstSon, class ...Sons>
+	struct are_derived_from : conditional<
+									(std::is_base_of<Base, FirstSon>::value 
+									&& are_derived_from<Base, Sons...>::value), 
+									true_type, 
+									false_type
+								>::type
+	{}; 
+
+	template <class Base, class LastSon>
+	struct are_derived_from<Base, LastSon> : conditional<
+													(std::is_base_of<Base, LastSon>::value), 
+													true_type, 
+													false_type
+												>::type
+	{};
+
 };
 
 #endif
