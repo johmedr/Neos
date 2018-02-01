@@ -24,5 +24,6 @@ ADDEXTEST(${CMAKE_CURRENT_LIST_DIR}/core/list/TestList.cc)
 ADDEXTEST(${CMAKE_CURRENT_LIST_DIR}/core/list/TestListComparisonOperations.cc)
 ADDEXTEST(${CMAKE_CURRENT_LIST_DIR}/core/meta/TestConditions.cc)
 ADDEXTEST(${CMAKE_CURRENT_LIST_DIR}/core/meta/TestVariadic.cc)
+ADDEXTEST(${CMAKE_CURRENT_LIST_DIR}/core/set/TestSet.cc)
 
 add_custom_target(all_tests COMMAND ${CMAKE_CTEST_COMMAND} DEPENDS ${TEST_FILES_NAMES})
