@@ -17,7 +17,8 @@ namespace arch
 	using Module = __core__::__atom__<>;
 
 	template <class ...Ms>
-	using Atom = typename __va_mpl__::make_unique<__core__::__atom__<Ms...>>::type; 
+	using Atom = typename enable_if< (is_module<Ms ...>::value || is_empty<Ms ...>::value), 
+					typename __va_mpl__::make_unique<__core__::__atom__<Ms...>>::type >::type; 
 };
 
 #endif
