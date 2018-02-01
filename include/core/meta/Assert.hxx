@@ -11,7 +11,8 @@ struct Assert
     using result = typename _A::fail;
 };
 
-template <> struct Assert<true> 
+template <> 
+struct Assert<true> 
 {
 	using result = true_type; 
 };
