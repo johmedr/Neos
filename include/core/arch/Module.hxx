@@ -3,7 +3,7 @@
 
 #include <core/arch/__atom__.hxx>
 
-namespace core
+namespace arch
 {
 	using Module = __core__::__atom__<>;
 }; 

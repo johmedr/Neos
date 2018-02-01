@@ -7,7 +7,7 @@
 #include <meta/all.hxx>
 
 
-namespace core
+namespace arch
 {
 	// __atom__ inherit Module, as Ms are Modules (checked below)
 	// Atom is the interface

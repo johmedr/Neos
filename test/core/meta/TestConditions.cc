@@ -47,8 +47,6 @@ private:
 public:
 	virtual bool runTests() 
 	{
-		// testMetaAnd(); 
-		// testMetaOr(); 
 		testConditional();
 		testAreDerivedFrom(); 
 		testIsEmpty(); 

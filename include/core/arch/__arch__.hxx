@@ -4,7 +4,7 @@
 #include <core/arch/Module.hxx>
 #include <core/arch/__config__.hxx>
 
-namespace core
+namespace arch
 {
 	namespace __core__ 
 	{

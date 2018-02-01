@@ -7,24 +7,24 @@ using namespace list;
 class TestClassList
 {
 private: 
-	void testNIL() 
+	bool testNIL() 
 	{
 		static_assert( equals<typename NIL::Head, NIL>::value ); 
 		static_assert( equals<typename NIL::Tail, NIL>::value ); 
 	}
 
-	void testEmptyList()
+	bool testEmptyList()
 	{
 		static_assert( equals<List<>, NIL>::value ); 
 	}	
 
-	void testOneEltList()
+	bool testOneEltList()
 	{
 		static_assert( equals<typename List<char>::Head, char>::value ); 
 		static_assert( equals<typename List<char>::Tail, NIL>::value );
 	}
 
-	void testMultipleEltList() 
+	bool testMultipleEltList() 
 	{
 		using l1 = List<int, char>; 
 		using l2 = List<List<>, bool, l1>;
@@ -37,7 +37,7 @@ private:
 	}
 
 public: 
-	void runTests() 
+	bool runTests() 
 	{
 		testNIL(); 
 		testEmptyList(); 
