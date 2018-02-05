@@ -3,7 +3,6 @@
 
 #include <core/arch/__conditions__.hxx>
 
-using namespace arch;
 
 struct TestConditions 
 {

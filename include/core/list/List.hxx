@@ -1,7 +1,8 @@
 #ifndef METADATASTRUCTURE_HXX
 #define METADATASTRUCTURE_HXX
 
-#include <core/meta/BaseTypes.hxx>
+#include <core/arch/__types__.hxx>
+
 
 namespace list
 {

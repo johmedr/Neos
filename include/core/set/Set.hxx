@@ -1,7 +1,7 @@
 #ifndef SET_HXX
 #define SET_HXX
 
-#include <core/meta/BaseTypes.hxx>
+#include <core/arch/__conditions__.hxx>
 
 namespace set
 {

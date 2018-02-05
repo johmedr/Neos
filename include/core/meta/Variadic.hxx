@@ -1,8 +1,8 @@
 #ifndef VARIADIC_HXX
 #define VARIADIC_HXX
 
-#include <core/meta/BaseTypes.hxx>
-#include <core/meta/Conditions.hxx>
+#include <core/arch/__types__.hxx>
+#include <core/arch/__conditions__.hxx>
 
 template <class Elt, class First, class ...Rest>
 struct va_contains : conditional<

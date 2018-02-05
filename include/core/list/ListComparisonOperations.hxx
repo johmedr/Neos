@@ -2,8 +2,8 @@
 #define LIST_CONTAIN_OPERATIONS_HXX
 
 #include <core/list/List.hxx>
-#include <core/meta/Conditions.hxx>
-#include <core/meta/BaseTypes.hxx>
+#include <core/arch/__conditions__.hxx>
+#include <core/arch/__types__.hxx>
 
 namespace list
 {
