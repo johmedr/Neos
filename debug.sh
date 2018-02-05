@@ -1,3 +1,3 @@
 #!/usr/bin/bash 
 
-metashell -- -I "`pwd`/include" -std=c++1z
+metashell --engine clang -- /usr/bin/clang++ -I "`pwd`/include" -std=c++1z
