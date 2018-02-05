@@ -16,31 +16,26 @@ namespace arch
 		{};
 
 		template <typename ...Ms> 
-		class __preprocess_valid_Ms__; 
+		struct __preprocess_valid_Ms__; 
 
 		template <typename ...Ms> 
-		class __build_atom__ : 
+		struct __build_atom__ : 
 			build_if<
-				(are_derived_from<__core__::__atom__<>, Ms...>::value || is_empty<Ms ...>::value),
-				typename __preprocess_valid_Ms__<Ms...>::type >::type 
+				(are_derived_from<__atom__<>, Ms...>::value || is_empty<Ms ...>::value),
+				typename __preprocess_valid_Ms__<Ms...>::type >
 		{}; 
 
 		template <typename ...Ms> 
-		class __preprocess_valid_Ms__ : 
+		struct __preprocess_valid_Ms__ : 
 			t_type< 
-				typename __va_mpl__::make_unique< __atom__<>, Ms... >::type 
-				> 
+				typename __va_mpl__::make_unique<__atom__<>, Ms... >::type > 
 		{}; 
-
-
 	};
 
 	using Module = __core__::__atom__<>;
 
 	template <typename ...Ms>
-	using Atom = typename build_if< 
-		(are_derived_from<__core__::__atom__<>, Ms...>::value || is_empty<Ms ...>::value), 
-			typename __va_mpl__::make_unique<__core__::__atom__<>, Ms...>::type >::type; 
+	using Atom = typename __core__::__build_atom__<Ms...>::type; 
 };
 
 #endif

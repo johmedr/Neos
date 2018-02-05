@@ -3,7 +3,7 @@
 
 #define CORE_MODS_DEFAULT_SCOPE public
 
-#define CORE_ATOM_VIRTUALITY
+#define CORE_ATOM_VIRTUALITY virtual
 #define CORE_ATOM_INHERITANCE public
 
 #define CORE_MODS_ARCH_VIRTUALITY
