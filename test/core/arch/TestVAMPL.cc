@@ -73,6 +73,46 @@ private:
 		static_assert( equals<s3, TestClass<short, long>>::value ); 
 	}
 
+	bool testPushFront() 
+	{
+		using s0 = typename push_back< TestClass<> >::type; 
+		using s1 = typename push_front< TestClass<>, float >::type; 
+		using s2 = typename push_front< TestClass<double>, long, int >::type; 
+		using s3 = typename push_front< TestClass<short, int, float>, char, short >::type;
+
+		static_assert( equals<s0, TestClass<>>::value );
+		static_assert( equals<s1, TestClass<float>>::value );
+		static_assert( equals<s2, TestClass<long, int, double>>::value );
+		static_assert( equals<s3, TestClass<char, short, short, int, float>>::value );
+	}
+
+	bool testPushBack() 
+	{
+		using s0 = typename push_back< TestClass<> >::type; 
+		using s1 = typename push_back< TestClass<>, float >::type; 
+		using s2 = typename push_back< TestClass<double>, long, int >::type; 
+		using s3 = typename push_back< TestClass<short, int, float>, char, short >::type;
+
+		static_assert( equals<s0, TestClass<>>::value );
+		static_assert( equals<s1, TestClass<float>>::value );
+		static_assert( equals<s2, TestClass<double, long, int>>::value );
+		static_assert( equals<s3, TestClass<short, int, float, char, short>>::value );
+	}
+
+
+	bool testUnpackFirstOrderVArgs()
+	{
+		using s1 = typename unpack_first_order_vargs< TestClass<> >::type; 
+		using s2 = typename unpack_first_order_vargs< TestClass<float, char> >::type; 
+		using s3 = typename unpack_first_order_vargs< TestClass<TestClass<float>, char> >::type; 
+		using s4 = typename unpack_first_order_vargs< TestClass<bool, TestClass<TestClass<long>, char> > >::type; 
+
+		static_assert( equals<s1, TestClass<>>::value );
+		static_assert( equals<s2, TestClass<float, char>>::value ); 
+		static_assert( equals<s3, TestClass<float, char>>::value );
+		static_assert( equals<s4, TestClass<bool, TestClass<long>, char>> ::value );
+	}
+
 public:	
 	bool runTests() 
 	{

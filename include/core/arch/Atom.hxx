@@ -3,14 +3,17 @@
 
 #include <core/arch/__atom__.hxx>
 #include <core/arch/Module.hxx>
-#include <core/arch/CoreMods.hxx>
-#include <meta/all.hxx>
 
 
 namespace arch
 {
 	// __atom__ inherit Module, as Ms are Modules (checked below)
 	// Atom is the interface
+	template <typename ...Ms>
+	using Atom = typename __core__::__build_atom__<Ms...>::type;
+
+
+
 	// template <class ...Ms> 
 	// class Atom : ATOM_VIRTUALITY ATOM_INHERITANCE enable_if<
 	// 							// An Atom inherits __atom__ if Ms are Modules

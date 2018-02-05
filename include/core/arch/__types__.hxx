@@ -3,11 +3,11 @@
 
 namespace arch 
 {	
-	template <class ...>
+	template <typename ...>
 	struct empty_type
 	{};
 
-	template <class T>
+	template <typename T>
 	struct t_type
 	{
 		using type = T;
