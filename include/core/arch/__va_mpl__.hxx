@@ -98,23 +98,6 @@ namespace arch
 			t_type< TClass<> >
 		{};
 
-		// namespace __helper__ 
-		// {	
-		// 	template < template <typename...> typename TClass, typename TArg >
-		// 	struct helper_unpack_first_order_arg; 
-
-		// 	template < typename TArg >
-		// 	struct helper_unpack_first_order_arg : 
-		// 		t_type<TArg>
-		// 	{}; 
-
-		// 	template < template <typename...> typename TClass, 	
-		// 		typename TArgsHead, typename ...TArgsTail >
-		// 	struct helper_unpack_first_order_arg : 
-		// 		t_type<TArgsHead, TArgsTail...>
-		// 	{};
-		// };
-
 		// Have separate Head and Tail guarantees that the class is not empty
 		template < template <typename...> typename TClass, 
 			typename ...TClassArgs, typename ...TArgs >
@@ -129,6 +112,29 @@ namespace arch
 		struct unpack_first_order_vargs< TClass, TArgsHead, TArgsTail... > : 
 			t_type< typename push_front< 	
 				typename unpack_first_order_vargs<TClass, TArgsTail...>::type, 
+					TArgsHead >::type >
+		{}; 
+
+		template < template <typename...> typename TClass, typename ...TArgs >
+		struct unpack_n_order_vargs; 
+
+		template < template <typename...> typename TClass >
+		struct unpack_n_order_vargs< TClass > : 
+			t_type< TClass<> >
+		{};
+
+		// Have separate Head and Tail guarantees that the class is not empty
+		template < template <typename...> typename TClass, 
+			typename ...TClassArgs, typename ...TArgs >
+		struct unpack_n_order_vargs< TClass, TClass<TClassArgs...>, TArgs... > : 
+			t_type< typename unpack_n_order_vargs<TClass, TClassArgs..., TArgs...>::type >
+		{};  
+
+		template < template <typename...> typename TClass, 
+			typename TArgsHead, typename ...TArgsTail >
+		struct unpack_n_order_vargs< TClass, TArgsHead, TArgsTail... > : 
+			t_type< typename push_front< 	
+				typename unpack_n_order_vargs<TClass, TArgsTail...>::type, 
 					TArgsHead >::type >
 		{}; 
 	}; 

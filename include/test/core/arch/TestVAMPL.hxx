@@ -116,6 +116,19 @@ private:
 		static_assert( equals<s4, TestClass<bool, TestClass<long>, char>>::value );
 	}
 
+	bool testUnpackNOrderVArgs()
+	{
+		using s1 = typename unpack_n_order_vargs< TestClass >::type; 
+		using s2 = typename unpack_n_order_vargs< TestClass, float, char >::type; 
+		using s3 = typename unpack_n_order_vargs< TestClass, TestClass<float>, char >::type; 
+		using s4 = typename unpack_n_order_vargs< TestClass, bool, TestClass<TestClass<long>, char> >::type; 
+
+		static_assert( equals<s1, TestClass<>>::value );
+		static_assert( equals<s2, TestClass<float, char>>::value ); 
+		static_assert( equals<s3, TestClass<float, char>>::value );
+		static_assert( equals<s4, TestClass<bool, long, char>>::value );
+	}
+
 public:	
 	bool runTests() 
 	{
