@@ -24,9 +24,11 @@ int main()
 {
 	MyAtom a; 
 	std::cout << "fdyn: " << a.instance.fdyn() << std::endl;
-	std::cout << "fstat: " << a.instance.fstat() << std::endl; 
+	std::cout << "fstat, dyn: " << a.instance.fstat() << std::endl; 
+	std::cout << "fstat, stat: " << MyAtom::class_inst::fstat() << std::endl;
 	std::cout << "adyn: " << a.instance.adyn << std::endl; 
-	std::cout << "astat: " << a.instance.astat << std::endl;
+	std::cout << "astat, dyn: " << a.instance.astat << std::endl;
+	std::cout << "astat, stat: " << MyAtom::class_inst::astat << std::endl;
 	// std::cout << "b: " << a.b << std::endl;
 	// std::cout << "a: " << a.a << std::endl;
 }
